@@ -11,13 +11,23 @@
     "commit": "cz"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^2.0.9",
+    "axios": "^0.27.2",
     "core-js": "^3.8.3",
+    "dayjs": "^1.11.7",
+    "default-passive-events": "^2.0.0",
+    "echarts": "^5.4.1",
+    "element-plus": "^2.2.14",
+    "normalize.css": "^8.0.1",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
     "vuex": "^4.0.0"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
+    "@iconify-json/ep": "^1.1.7",
+    "@typescript-eslint/eslint-plugin": "^5.33.0",
     "@typescript-eslint/parser": "^5.4.0",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
@@ -36,7 +46,10 @@
     "less": "^4.0.0",
     "less-loader": "^8.0.0",
     "prettier": "^2.7.1",
-    "typescript": "~4.5.5"
+    "typescript": "~4.5.5",
+    "unplugin-auto-import": "^0.11.2",
+    "unplugin-icons": "^0.14.8",
+    "unplugin-vue-components": "^0.22.4"
   },
   "config": {
     "commitizen": {

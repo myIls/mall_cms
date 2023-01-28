@@ -4,6 +4,9 @@
     "module": "esnext",
     "strict": true,
     "jsx": "preserve",
+    // "importHelpers": true,
+    // "downlevelIteration": true,
+    "resolveJsonModule": true,
     "moduleResolution": "node",
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -12,7 +15,7 @@
     "useDefineForClassFields": true,
     "sourceMap": true,
     "baseUrl": ".",
-    "types": ["webpack-env"],
+    "types": ["webpack-env", "element-plus/global"],
     "paths": {
       "@/*": ["src/*"]
     },
@@ -23,7 +26,9 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",
-    "tests/**/*.tsx"
+    "tests/**/*.tsx",
+    "src/auto-imports.d.ts",
+    "src/components.d.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules/**"]
 }

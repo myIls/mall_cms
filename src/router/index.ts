@@ -1,26 +1,60 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import {
+  createRouter,
+  createWebHashHistory
+  // createWebHistory,
+} from 'vue-router'
+
+import type { RouteRecordRaw } from 'vue-router'
+
+import localCache from '@/utils/cache'
+import { firstMenu } from '@/utils/map-menus'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    redirect: '/main'
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
+    path: '/login',
+    name: 'login',
     component: () =>
-      import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+      import(/* webpackChunkName: "login" */ '@/views/login/login.vue')
+  },
+  {
+    path: '/main',
+    name: 'main',
+    component: () =>
+      import(/* webpackChunkName: "main" */ '@/views/main/main.vue')
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'not-found',
+    component: () =>
+      import(
+        /* webpackChunkName: "not-found" */ '@/views/not-found/not-found.vue'
+      )
   }
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHashHistory(process.env.BASE_URL),
   routes
 })
 
+router.beforeEach((to) => {
+  const token = localCache.getCache('token')
+  if (to.path !== '/login') {
+    if (!token) {
+      return '/login'
+    }
+    if (to.name === 'main') {
+      return firstMenu.url
+    }
+  } else {
+    // 登录页
+    if (token) {
+      return '/main'
+    }
+  }
+})
 export default router
